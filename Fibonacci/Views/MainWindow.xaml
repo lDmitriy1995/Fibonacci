@@ -1,0 +1,35 @@
+﻿<Window x:Class="Fibonacci.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fibonacci.Views"
+        xmlns:models="clr-namespace:Fibonacci.Models"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <models:Fibonacci x:Key="viewmodel"></models:Fibonacci>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource viewmodel}">
+        <TextBlock x:Name="Tblfibonacci" HorizontalAlignment="Right" Margin="0,114,189,0" TextWrapping="Wrap" Text="Числа Фибоначчи" VerticalAlignment="Top" Height="25" Width="182" FontSize="20" FontWeight="Bold" />
+        <TextBlock x:Name="Tblprimenumbers" HorizontalAlignment="Left" Margin="12,114,0,0" TextWrapping="Wrap" Text="Простые числа" VerticalAlignment="Top" Height="25" Width="186" FontSize="20" FontWeight="Bold" />
+        <TextBlock x:Name="Tblnummin" HorizontalAlignment="Left" Height="24" Margin="16,12,0,0" TextWrapping="Wrap" Text="Минимальное число:" VerticalAlignment="Top" Width="204" FontSize="20" />
+        <TextBlock x:Name="Tblnummax" HorizontalAlignment="Left" Height="24" Margin="16,52,0,0" TextWrapping="Wrap" Text="Максимальное число:" VerticalAlignment="Top" Width="204" FontSize="20" />
+        <TextBox x:Name="txtnummin" HorizontalAlignment="Left" Height="24" Margin="269,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Text="{Binding Min}" PreviewTextInput="txtnummin_PreviewTextInput" SelectionChanged="txtnummin_SelectionChanged" GotFocus="txtnummin_GotFocus" />
+        <TextBox x:Name="txtnummax" HorizontalAlignment="Left" Height="24" Margin="267,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Text="{Binding Max}" PreviewTextInput="txtnummax_PreviewTextInput" GotFocus="txtnummax_GotFocus" SelectionChanged="txtnummax_SelectionChanged"/>
+        <TextBox x:Name="txtresult" HorizontalAlignment="Left" Height="334" Margin="14,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="358" IsReadOnly="True" IsReadOnlyCaretVisible="True" Text="{Binding Value2}"/>
+        <Button x:Name="btncom" Content="Расчитать / Продолжить" HorizontalAlignment="Left" Margin="14,505,0,0" VerticalAlignment="Top" Width="242" Height="35" FontSize="20" Command="{Binding StartCommand2}"/>
+        <Button x:Name="btnclr" Content="Пауза" HorizontalAlignment="Left" Height="35" Margin="261,505,0,0" VerticalAlignment="Top" Width="109" FontSize="20" Command="{Binding PauseCommand2}"/>
+        <Button x:Name="primenumbers" Content="Остановить / Очистить" HorizontalAlignment="Left" Margin="72,567,0,0" VerticalAlignment="Top" Width="221" Height="34" FontSize="20" Command="{Binding StopCommand2}" Click="primenumbers_Click" />
+
+        <TextBox x:Name="txtresultfib" HorizontalAlignment="Right" Height="334" Margin="0,146,16,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="354" IsReadOnly="True" IsReadOnlyCaretVisible="True" Text="{Binding Value}"/>
+
+        <Button x:Name="btncomfib" Content="Расчитать / Продолжить" HorizontalAlignment="Right" Margin="0,505,132,0" VerticalAlignment="Top" Width="237" Height="35" FontSize="20" Command="{Binding StartCommand}"/>
+        <Button x:Name="btnpausefib" Content="Пауза" HorizontalAlignment="Right" Height="35" Margin="0,505,17,0" VerticalAlignment="Top" Width="110" FontSize="20" Command="{Binding PauseCommand}" />
+        <Button x:Name="btnstopfib" Content="Отменить / Очистить" HorizontalAlignment="Right" Margin="0,566,87,0" VerticalAlignment="Top" Width="216" Height="35" FontSize="20" Command="{Binding StopCommand}" Click="btnstopfib_Click"/>
+
+        <TextBox x:Name="txtnumfib" HorizontalAlignment="Right" Height="24" Margin="0,52,19,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" Text="{Binding txtnum}" PreviewTextInput="txtnumfib_PreviewTextInput" SelectionChanged="txtnumfib_SelectionChanged" GotFocus="txtnumfib_GotFocus"/>
+        <TextBlock x:Name="Tblnumfib" HorizontalAlignment="Right" Height="24" Margin="0,52,116,0" TextWrapping="Wrap" Text="Число для расчета:" VerticalAlignment="Top" Width="243" FontSize="20" />
+    </Grid>
+</Window>
